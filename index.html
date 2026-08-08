@@ -1,0 +1,2867 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malak Abdullah Zedan — Full-Stack &amp; AI/ML Engineer</title>
+
+  <!-- SEO & LinkedIn Open Graph Metadata -->
+  <meta name="description"
+    content="Portfolio of Malak Abdullah Zedan — Full-Stack Developer &amp; AI/ML Engineer. Specialized in Azure Cloud, React, Node.js, and PyTorch ML models.">
+  <meta property="og:title" content="Malak Abdullah Zedan — Full-Stack &amp; AI/ML Engineer">
+  <meta property="og:description"
+    content="Explore my portfolio: Interactive CLI Terminal, System Design Explorer, and Algorithmic Sandbox. Graduated from Future University in Egypt.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://github.com/Malakzedan">
+  <meta property="og:image" content="https://raw.githubusercontent.com/Malakzedan/portfolio/main/preview.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      /* Dark Theme variables by default */
+      --bg: #080b11;
+      --bg-alt: #0e1320;
+      --surface: #151c2e;
+      --surface-hover: #1b253d;
+      --surface-border: rgba(255, 255, 255, 0.08);
+      --surface-border-strong: rgba(255, 255, 255, 0.16);
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-muted-dim: #6b7280;
+      --primary: #10b981;
+      /* Emerald / Teal */
+      --primary-rgb: 16, 185, 129;
+      --accent: #f59e0b;
+      /* Amber */
+      --accent-rgb: 245, 158, 11;
+      --accent-2: #6366f1;
+      /* Indigo */
+      --accent-2-rgb: 99, 102, 241;
+
+      --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --display: 'Outfit', var(--sans);
+
+      --radius: 8px;
+      --radius-sm: 4px;
+      --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+      --glow: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.15), transparent 50%);
+    }
+
+    body.light-theme {
+      /* Light Theme variables */
+      --bg: #f9fafb;
+      --bg-alt: #f3f4f6;
+      --surface: #ffffff;
+      --surface-hover: #f3f4f6;
+      --surface-border: rgba(0, 0, 0, 0.08);
+      --surface-border-strong: rgba(0, 0, 0, 0.15);
+      --text: #1f2937;
+      --text-muted: #4b5563;
+      --text-muted-dim: #9ca3af;
+      --primary: #059669;
+      /* Richer Emerald */
+      --primary-rgb: 5, 150, 105;
+      --accent: #d97706;
+      /* Darker Amber */
+      --accent-rgb: 217, 119, 6;
+      --accent-2: #4f46e5;
+      /* Richer Indigo */
+      --accent-2-rgb: 79, 70, 229;
+
+      --shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.15);
+      --glow: radial-gradient(circle at 50% 0%, rgba(5, 150, 105, 0.08), transparent 50%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    ::selection {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 3px;
+    }
+
+    .wrap {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        padding: 0 16px;
+      }
+    }
+
+    /* ---------- Background Grid Pattern & Glows ---------- */
+    .background-effects {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--surface-border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--surface-border) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse 60% 50% at 50% 10%, #000 30%, transparent 100%);
+      opacity: 0.65;
+    }
+
+    .glow-bg {
+      position: absolute;
+      top: -300px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 1200px;
+      height: 600px;
+      background: var(--glow);
+      filter: blur(100px);
+      opacity: 0.8;
+    }
+
+    /* ---------- Custom Header ---------- */
+    header.nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(var(--bg==#080b11 ? '8,11,17' : '249,250,251'), 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--surface-border);
+      transition: background 0.3s ease, border 0.3s ease;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+    }
+
+    .logo {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      user-select: none;
+    }
+
+    .logo .logo-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--primary);
+      animation: pulse 2s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% {
+        opacity: 0.4;
+        transform: scale(0.9);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    }
+
+    nav.links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    nav.links a {
+      position: relative;
+      padding: 4px 0;
+    }
+
+    nav.links a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    nav.links a:hover {
+      color: var(--text);
+    }
+
+    nav.links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* Switch Style */
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--surface-border-strong);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      color: var(--text-muted);
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .theme-toggle:hover {
+      color: var(--text);
+      border-color: var(--primary);
+      background: var(--surface);
+    }
+
+    .theme-toggle svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .theme-toggle .sun-icon {
+      display: none;
+    }
+
+    body.light-theme .theme-toggle .moon-icon {
+      display: none;
+    }
+
+    body.light-theme .theme-toggle .sun-icon {
+      display: block;
+    }
+
+    .nav-cta {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: #ffffff;
+      background: var(--primary);
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.2);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(var(--primary-rgb), 0.35);
+      background: var(--primary);
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      nav.links {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+        background: none;
+        border: 1px solid var(--surface-border-strong);
+        color: var(--text);
+        font-family: var(--mono);
+        font-size: 12px;
+        padding: 6px 12px;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        align-items: center;
+        gap: 6px;
+      }
+    }
+
+    /* ---------- Mobile Menu Overlay ---------- */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      top: 65px;
+      z-index: 99;
+      background: var(--bg);
+      border-top: 1px solid var(--surface-border);
+      display: none;
+      flex-direction: column;
+      padding: 32px 24px;
+      gap: 24px;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      font-size: 20px;
+      font-family: var(--display);
+      font-weight: 500;
+      border-bottom: 1px solid var(--surface-border);
+      padding-bottom: 12px;
+    }
+
+    /* ---------- Hero Grid & Structure ---------- */
+    .hero {
+      padding: 80px 0 64px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 48px 0;
+        gap: 40px;
+      }
+    }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 600;
+    }
+
+    .eyebrow .eyebrow-line {
+      width: 24px;
+      height: 1px;
+      background: var(--primary);
+    }
+
+    h1.title {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    h1.title span.gradient-text {
+      background: linear-gradient(135deg, var(--primary), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .role-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .role-badge {
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 50px;
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .role-badge span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 16.5px;
+      max-width: 52ch;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(var(--primary-rgb), 0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.4);
+      background: var(--primary);
+    }
+
+    .btn-secondary {
+      background: var(--accent-2);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(var(--accent-2-rgb), 0.2);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(var(--accent-2-rgb), 0.4);
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--surface-border-strong);
+      color: var(--text);
+      background: transparent;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(var(--accent-rgb), 0.05);
+    }
+
+    /* ---------- Interactive CLI Terminal Card ---------- */
+    .terminal-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--surface-border-strong);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 320px;
+    }
+
+    .terminal-header {
+      background: var(--surface);
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--surface-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .terminal-buttons {
+      display: flex;
+      gap: 6px;
+    }
+
+    .terminal-buttons span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .terminal-btn-close {
+      background-color: #ef4444;
+    }
+
+    .terminal-btn-min {
+      background-color: #eab308;
+    }
+
+    .terminal-btn-max {
+      background-color: #22c55e;
+    }
+
+    .terminal-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted-dim);
+    }
+
+    .terminal-body {
+      flex: 1;
+      padding: 16px 20px;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      overflow-y: auto;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .terminal-line {
+      line-height: 1.4;
+      white-space: pre-wrap;
+    }
+
+    .terminal-prompt {
+      color: var(--primary);
+      margin-right: 8px;
+    }
+
+    .terminal-output {
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .terminal-input-container {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .terminal-cursor {
+      display: inline-block;
+      width: 7px;
+      height: 15px;
+      background: var(--primary);
+      margin-left: 2px;
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+    }
+
+    .terminal-hidden-input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+      width: 0;
+      height: 0;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    /* ---------- Section Standards ---------- */
+    section {
+      padding: 80px 0;
+      border-top: 1px solid var(--surface-border);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .section-number {
+      font-family: var(--mono);
+      color: var(--text-muted-dim);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 26px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-title span.dim {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* ---------- About Section & Telemetry ---------- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 48px;
+    }
+
+    @media (max-width: 850px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+    }
+
+    .about-bio p {
+      color: var(--text-muted);
+      font-size: 16px;
+      margin-bottom: 18px;
+      max-width: 62ch;
+    }
+
+    .about-bio p b {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .about-stats {
+      background: var(--bg-alt);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-self: start;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--surface-border);
+      padding-bottom: 12px;
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+
+    .stat-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+    }
+
+    .stat-val {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .stat-val.active {
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .stat-val.active::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 6px var(--primary);
+      display: inline-block;
+    }
+
+    /* ---------- Experience Timeline ---------- */
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .experience-list::before {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: var(--surface-border-strong);
+    }
+
+    .exp-item {
+      position: relative;
+    }
+
+    .exp-item::before {
+      content: "";
+      position: absolute;
+      left: -28px;
+      top: 6px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 3px solid var(--primary);
+      box-shadow: 0 0 8px rgba(var(--primary-rgb), 0.4);
+      z-index: 1;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .exp-title-group h3 {
+      font-family: var(--display);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .exp-title-group h3 span.company {
+      color: var(--accent-2);
+    }
+
+    .exp-date {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      background: rgba(var(--accent-rgb), 0.08);
+      padding: 2px 10px;
+      border-radius: 4px;
+    }
+
+    .exp-details {
+      list-style: none;
+      color: var(--text-muted);
+      font-size: 14.5px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .exp-details li {
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .exp-details li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-family: var(--mono);
+    }
+
+    /* ---------- Interactive System Design Showcase ---------- */
+    .sys-design-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--surface-border-strong);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .sys-design-intro {
+      padding: 24px;
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    .sys-design-intro h4 {
+      font-family: var(--display);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .sys-design-intro p {
+      font-size: 14.5px;
+      color: var(--text-muted);
+    }
+
+    .sys-design-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 280px;
+    }
+
+    @media (max-width: 800px) {
+      .sys-design-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sys-blocks {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--surface-border);
+    }
+
+    .sys-block {
+      background: var(--bg-alt);
+      padding: 20px 24px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition);
+      border-left: 3px solid transparent;
+      user-select: none;
+    }
+
+    .sys-block:hover {
+      background: var(--surface);
+    }
+
+    .sys-block.active {
+      background: var(--surface-hover);
+      border-left-color: var(--primary);
+    }
+
+    .sys-block-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .sys-block-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .sys-block-name {
+      font-family: var(--display);
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .sys-block-chevron {
+      color: var(--text-muted-dim);
+      font-family: var(--mono);
+      font-size: 18px;
+      transition: var(--transition);
+    }
+
+    .sys-block.active .sys-block-chevron {
+      transform: translateX(4px);
+      color: var(--primary);
+    }
+
+    .sys-detail-panel {
+      padding: 32px;
+      background: rgba(var(--accent-2-rgb), 0.015);
+      border-left: 1px solid var(--surface-border);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @media (max-width: 800px) {
+      .sys-detail-panel {
+        border-left: none;
+        border-top: 1px solid var(--surface-border);
+      }
+    }
+
+    .sys-detail-panel h5 {
+      font-family: var(--display);
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+
+    .sys-tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .sys-tech-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      color: var(--text-muted);
+    }
+
+    .sys-challenge {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--surface-border);
+    }
+
+    .sys-challenge-title {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .sys-detail-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ---------- Project Cards ---------- */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 800px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .project-card:hover {
+      border-color: var(--surface-border-strong);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .project-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 8px;
+    }
+
+    .project-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .project-tag.tag-ai {
+      background: rgba(var(--primary-rgb), 0.1);
+      color: var(--primary);
+    }
+
+    .project-tag.tag-cloud {
+      background: rgba(var(--accent-rgb), 0.1);
+      color: var(--accent);
+    }
+
+    .project-tag.tag-dev {
+      background: rgba(var(--accent-2-rgb), 0.1);
+      color: var(--accent-2);
+    }
+
+    .project-link-icon {
+      color: var(--text-muted-dim);
+      transition: var(--transition);
+    }
+
+    .project-card:hover .project-link-icon {
+      color: var(--primary);
+    }
+
+    .project-title {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .project-desc {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 20px;
+      line-height: 1.55;
+      flex-grow: 1;
+    }
+
+    .project-stack {
+      border-top: 1px solid var(--surface-border);
+      padding-top: 14px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-muted-dim);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .project-stack span.label {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ---------- Algorithmic Sandbox Section ---------- */
+    .sandbox-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--surface-border-strong);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .sandbox-tabs {
+      display: flex;
+      background: var(--surface);
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    .sandbox-tab {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      padding: 14px 24px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      border-bottom: 2px solid transparent;
+      user-select: none;
+    }
+
+    .sandbox-tab:hover {
+      color: var(--text);
+    }
+
+    .sandbox-tab.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+      background: var(--bg-alt);
+    }
+
+    .sandbox-workspace {
+      padding: 32px;
+    }
+
+    @media (max-width: 600px) {
+      .sandbox-workspace {
+        padding: 20px;
+      }
+    }
+
+    .sandbox-panel {
+      display: none;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sandbox-panel.active {
+      display: flex;
+    }
+
+    .sandbox-desc {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .sandbox-controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .sandbox-btn {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 8px 16px;
+      background: var(--surface);
+      border: 1px solid var(--surface-border-strong);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .sandbox-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .sandbox-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      border-color: var(--surface-border);
+      color: var(--text-muted-dim);
+    }
+
+    .algo-visualizer-container {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius);
+      padding: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      min-height: 180px;
+      position: relative;
+    }
+
+    /* Bubble Sort Bars */
+    .bar-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      height: 120px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .visual-bar {
+      width: 32px;
+      background: var(--accent-2);
+      border-radius: 4px 4px 0 0;
+      transition: height 0.2s, background-color 0.2s;
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .visual-bar::after {
+      content: attr(data-value);
+      position: absolute;
+      bottom: -22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .visual-bar.comparing {
+      background: var(--accent);
+    }
+
+    .visual-bar.swapped {
+      background: #ef4444;
+    }
+
+    .visual-bar.sorted {
+      background: var(--primary);
+    }
+
+    /* Binary Search Blocks */
+    .search-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .search-node {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--surface-border-strong);
+      border-radius: var(--radius-sm);
+      background: var(--bg-alt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 13px;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .search-node.active-range {
+      background: rgba(var(--accent-2-rgb), 0.1);
+      border-color: var(--accent-2);
+    }
+
+    .search-node.mid {
+      background: rgba(var(--accent-rgb), 0.2);
+      border-color: var(--accent);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .search-node.found {
+      background: rgba(var(--primary-rgb), 0.2);
+      border-color: var(--primary);
+      color: var(--primary);
+      font-weight: 700;
+      box-shadow: 0 0 12px rgba(var(--primary-rgb), 0.3);
+    }
+
+    .search-node.discarded {
+      opacity: 0.3;
+    }
+
+    .search-node-label {
+      position: absolute;
+      top: -18px;
+      font-size: 9px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .search-node-label.L {
+      color: var(--accent-2);
+    }
+
+    .search-node-label.R {
+      color: var(--accent-2);
+    }
+
+    .search-node-label.M {
+      color: var(--accent);
+    }
+
+    .algo-status-overlay {
+      position: absolute;
+      top: 10px;
+      left: 14px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      background: rgba(var(--bg-alt==#0e1320 ? '14,19,32' : '243,244,246'), 0.85);
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid var(--surface-border);
+    }
+
+    /* ---------- Skills Toolkit Section ---------- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px 36px;
+    }
+
+    @media (max-width: 768px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .skill-group-title {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-group-title svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-chip {
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 6px 14px;
+      border: 1px solid var(--surface-border-strong);
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      transition: var(--transition);
+      cursor: default;
+      user-select: none;
+      background: var(--surface);
+    }
+
+    .skill-chip:hover {
+      color: var(--text);
+      border-color: var(--primary);
+      transform: scale(1.02);
+      background: rgba(var(--primary-rgb), 0.02);
+    }
+
+    /* ---------- Contact & Direct Copy ---------- */
+    .contact-card {
+      border: 1px solid var(--surface-border-strong);
+      border-radius: var(--radius);
+      padding: 56px 40px;
+      background: linear-gradient(145deg, var(--bg-alt), var(--surface));
+      text-align: center;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 600px) {
+      .contact-card {
+        padding: 40px 20px;
+      }
+    }
+
+    .contact-card h2 {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(24px, 4vw, 36px);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-card p {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 48ch;
+      margin: 0 auto 32px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .copy-toast {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--primary);
+      margin-top: 14px;
+      height: 16px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    /* ---------- Resume Overlay Modal ---------- */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 150;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--bg);
+      border: 1px solid var(--surface-border-strong);
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 800px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow);
+      position: relative;
+      animation: zoomIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.9) translateY(10px);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-header {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--surface-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-title {
+      font-family: var(--display);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 1;
+      transition: var(--transition);
+    }
+
+    .modal-close:hover {
+      color: var(--text);
+    }
+
+    .modal-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+    }
+
+    .modal-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--surface-border);
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    /* Embedded CV Styles inside Modal */
+    .resume-preview {
+      font-family: var(--sans);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .resume-section-title {
+      font-family: var(--display);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      border-bottom: 1px solid var(--surface-border);
+      padding-bottom: 6px;
+      margin: 20px 0 10px;
+      font-weight: 700;
+    }
+
+    .resume-item {
+      margin-bottom: 14px;
+    }
+
+    .resume-item-header {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .resume-item-sub {
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .resume-bullet-list {
+      list-style-type: disc;
+      margin-left: 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .resume-bullet-list li {
+      margin-bottom: 4px;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      border-top: 1px solid var(--surface-border);
+      padding: 24px 0;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-muted-dim);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Layer -->
+  <div class="background-effects">
+    <div class="grid-bg"></div>
+    <div class="glow-bg"></div>
+  </div>
+
+  <!-- Sticky Navigation Header -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <div class="logo">
+        <span class="logo-dot"></span>
+        <span>M.ZEDAN</span>
+      </div>
+      <nav class="links">
+        <a href="#about">about</a>
+        <a href="#experience">experience</a>
+        <a href="#projects">projects</a>
+        <a href="#sandbox">sandbox</a>
+        <a href="#skills">skills</a>
+      </nav>
+      <div class="nav-actions">
+        <!-- Light / Dark Switch -->
+        <button class="theme-toggle" id="themeToggleBtn" aria-label="Toggle light/dark theme">
+          <svg class="moon-icon" viewBox="0 0 24 24">
+            <path
+              d="M12.3 22h-.1c-5.5 0-10-4.5-10-10 0-4.8 3.5-8.9 8.2-9.8.5-.1 1 .2 1.2.7.2.5 0 1.1-.4 1.4-2.8 1.9-4.2 5.2-3.6 8.5.7 3.6 3.7 6.4 7.3 6.9 2 .3 4-.3 5.5-1.5.4-.3 1-.3 1.3.1.3.4.3.9 0 1.3-2.1 2.3-5.1 3.4-7.9 3.4z" />
+          </svg>
+          <svg class="sun-icon" viewBox="0 0 24 24">
+            <path
+              d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.01c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z" />
+          </svg>
+        </button>
+        <a class="nav-cta" href="#contact">contact →</a>
+        <button class="menu-toggle" id="menuToggleBtn">
+          <span>menu</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Overlay Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" class="mobile-link">about</a>
+    <a href="#experience" class="mobile-link">experience</a>
+    <a href="#projects" class="mobile-link">projects</a>
+    <a href="#sandbox" class="mobile-link">sandbox</a>
+    <a href="#skills" class="mobile-link">skills</a>
+  </div>
+
+  <main>
+
+    <!-- Hero / Profile Intro Section -->
+    <div class="wrap hero">
+      <div>
+        <h1 class="title">Malak Abdullah <br><span class="gradient-text">Zedan</span></h1>
+
+        <div class="role-badge-row">
+          <div class="role-badge">
+            <span class="dot" style="background-color: var(--primary);"></span>
+            <span>Full-Stack Engineer</span>
+          </div>
+          <div class="role-badge">
+            <span class="dot" style="background-color: var(--accent);"></span>
+            <span>AI/ML Practitioner</span>
+          </div>
+          <div class="role-badge">
+            <span class="dot" style="background-color: var(--accent-2);"></span>
+            <span>Cloud Engineer</span>
+          </div>
+        </div>
+
+        <p class="hero-desc">
+          Computer Science graduate from Future University in Egypt, specializing in deploying production-grade <b>cloud
+            infrastructure</b>, writing robust <b>backend APIs</b>, and running optimized <b>neural nets</b>. ECPC
+          contestant and builder of real-time distributed platforms.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="openResumeBtn">View resume</button>
+          <a class="btn btn-ghost" href="#projects">View work</a>
+        </div>
+      </div>
+
+      <!-- Interactive ZSH CLI Terminal Emulator -->
+      <div class="terminal-card">
+        <div class="terminal-header">
+          <div class="terminal-buttons">
+            <span class="terminal-btn-close"></span>
+            <span class="terminal-btn-min"></span>
+            <span class="terminal-btn-max"></span>
+          </div>
+          <div class="terminal-title">guest@mzidan-core ~ zsh</div>
+          <div></div>
+        </div>
+        <div class="terminal-body" id="terminalBody" onclick="focusTerminalInput()">
+          <div class="terminal-line"><span class="terminal-prompt">Guest-Host%</span> whoami</div>
+          <div class="terminal-output">Malak Abdullah Zedan
+            B.Sc. Computer Science (2022 - 2026)
+            Specialization: Full-Stack Dev / AI-ML Core / Azure Cloud Infra</div>
+
+          <div class="terminal-line"><span class="terminal-prompt">Guest-Host%</span> cat welcome.txt</div>
+          <div class="terminal-output">Welcome to my interactive portfolio terminal!
+            Type <span style="color: var(--primary); font-weight: 600;">help</span> to view all available commands.
+          </div>
+
+          <!-- Input insertion point -->
+          <div class="terminal-input-container">
+            <span class="terminal-prompt">Guest-Host%</span>
+            <span id="terminalInputText"></span>
+            <span class="terminal-cursor"></span>
+            <input type="text" class="terminal-hidden-input" id="terminalHiddenInput" autocomplete="off"
+              spellcheck="false" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 01: About Bio -->
+    <section id="about">
+      <div class="wrap about-grid">
+        <div class="about-bio">
+          <div class="section-head">
+            <span class="section-number">01</span>
+            <h2 class="section-title">About <span class="dim">/ background</span></h2>
+          </div>
+          <p>
+            I am a <b>Software Engineer</b> focused on building scalable, high-performance, and intelligent applications,
+            with a strong interest in AI and machine learning. I combine software engineering, <b>full-stack development</b>,
+            machine learning, and cloud technologies to turn intelligent models into reliable, production-ready applications.
+          </p>
+          <p>
+            My work spans developing machine learning and NLP solutions, building performant APIs and web applications,
+            and working with <b>cloud-based infrastructure</b>. I enjoy bridging the gap between AI models and real-world
+            products by transforming complex models into practical systems and intuitive user experiences.
+          </p>
+          <p>
+            My competitive programming experience through <b>ECPC</b> strengthened my ability to design efficient
+            algorithms and solve complex problems, a mindset I apply to code optimization, query performance, system
+            design, and resource efficiency.
+          </p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-row">
+            <span class="stat-label">Location</span>
+            <span class="stat-val">New Cairo, Egypt</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Education</span>
+            <span class="stat-val">B.Sc. CS, FUE (2022-2026)</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Languages</span>
+            <span class="stat-val">Arabic (Native) / English (Fluent)</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Focus Areas</span>
+            <span class="stat-val">Full-Stack + AI/ML Engineering</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Availability</span>
+            <span class="stat-val active">Open to Opportunities</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 02: Experience Timeline (STAR Formatted) -->
+    <section id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-number">02</span>
+          <h2 class="section-title">Experience <span class="dim">/ employment</span></h2>
+        </div>
+
+        <div class="experience-list">
+          <!-- Jelecom -->
+          <div class="exp-item">
+            <div class="exp-header">
+              <div class="exp-title-group">
+                <h3>Cloud Engineer <span class="company">@ Jelecom</span></h3>
+              </div>
+              <span class="exp-date">JUL 2025 — AUG 2025</span>
+            </div>
+            <ul class="exp-details">
+              <li>Architected and provisioned scalable Microsoft Azure environments utilizing Virtual Machines, custom
+                Virtual Networks (VNets), and Network Security Groups (NSGs), reducing infrastructure access vectors by
+                40%.</li>
+              <li>Configured hybrid storage solutions with Azure File Shares, achieving secure, high-throughput
+                concurrent access for distributed enterprise services.</li>
+              <li>Authored and executed end-to-end cloud deployment pipelines, applying CIS security benchmarks and
+                automated resource group policies.</li>
+            </ul>
+          </div>
+
+          <!-- ECPC -->
+          <div class="exp-item">
+            <div class="exp-header">
+              <div class="exp-title-group">
+                <h3>Competitive Programming Contestant <span class="company">@ ECPC</span></h3>
+              </div>
+              <span class="exp-date">JUL 2025</span>
+            </div>
+            <ul class="exp-details">
+              <li>Competed at national level, designing optimal graph traversal, dynamic programming, and combinatorial
+                algorithms under extreme time constraints.</li>
+              <li>Engineered C++ solutions optimized for low computational complexity, placing in competitive brackets
+                and developing rapid debugging workflows.</li>
+            </ul>
+          </div>
+
+          <!-- AAIB -->
+          <div class="exp-item">
+            <div class="exp-header">
+              <div class="exp-title-group">
+                <h3>Full-Stack Engineering Intern <span class="company">@ Arab African International Bank</span></h3>
+              </div>
+              <span class="exp-date">AUG 2024</span>
+            </div>
+            <ul class="exp-details">
+              <li>Co-developed high-security merchant and user portal systems, building responsive UIs in React.js and
+                high-performance server microservices in Node.js/Express.js.</li>
+              <li>Designed relational schema extensions and RESTful APIs with strict authentication and payload
+                validation, supporting mock-bank operations.</li>
+              <li>Optimized backend route latency and database indices, decreasing dashboard response times by 35%.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 03: Projects with Interactive System Design Showcase -->
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-number">03</span>
+          <h2 class="section-title">Projects <span class="dim">/ selected systems</span></h2>
+        </div>
+
+        <!-- The Big Showcase: Intelligent Interview Simulation System (IISS) -->
+        <div class="sys-design-card">
+          <div class="sys-design-intro">
+            <h4>Intelligent Interview Simulation System (IISS)</h4>
+            <p>Graduation Project — A real-time AI-powered candidate evaluation ecosystem across Web, Desktop, and
+              Mobile clients.</p>
+          </div>
+          <div class="sys-design-grid">
+            <div class="sys-blocks">
+              <div class="sys-block active" onclick="selectSysBlock(0)">
+                <div class="sys-block-info">
+                  <span class="sys-block-label">Layer 01</span>
+                  <span class="sys-block-name">Client Application Layer</span>
+                </div>
+                <span class="sys-block-chevron">→</span>
+              </div>
+              <div class="sys-block" onclick="selectSysBlock(1)">
+                <div class="sys-block-info">
+                  <span class="sys-block-label">Layer 02</span>
+                  <span class="sys-block-name">Gateway &amp; Orchestration</span>
+                </div>
+                <span class="sys-block-chevron">→</span>
+              </div>
+              <div class="sys-block" onclick="selectSysBlock(2)">
+                <div class="sys-block-info">
+                  <span class="sys-block-label">Layer 03</span>
+                  <span class="sys-block-name">Multi-Modal AI Inference Engine</span>
+                </div>
+                <span class="sys-block-chevron">→</span>
+              </div>
+              <div class="sys-block" onclick="selectSysBlock(3)">
+                <div class="sys-block-info">
+                  <span class="sys-block-label">Layer 04</span>
+                  <span class="sys-block-name">Database &amp; Data Pipeline</span>
+                </div>
+                <span class="sys-block-chevron">→</span>
+              </div>
+            </div>
+
+            <div class="sys-detail-panel" id="sysDetailPanel">
+              <h5 id="sysDetailTitle">Client Application Layer</h5>
+              <div class="sys-tech-stack" id="sysDetailTech">
+                <span class="sys-tech-tag">Flutter</span>
+                <span class="sys-tech-tag">Dart</span>
+                <span class="sys-tech-tag">WebSocket Client</span>
+                <span class="sys-tech-tag">WebRTC</span>
+              </div>
+              <p class="sys-detail-desc" id="sysDetailDesc">
+                Cross-platform client applications (Mobile, Web, and Desktop) that establish hardware media pipelines.
+                Streams camera video frames and audio input chunks to the cloud gateway while managing a responsive user
+                interface for the interactive interview session.
+              </p>
+              <div class="sys-challenge">
+                <div class="sys-challenge-title">Engineering Challenge &amp; Solution</div>
+                <p class="sys-detail-desc" id="sysDetailChallenge">
+                  <b>High Frame Throttling:</b> Native high-resolution camera feeds saturated connection limits.
+                  Implemented a frame-slicing buffer that crops face regions and downsamples resolution dynamically
+                  depending on network performance, maintaining a 94% ML accuracy threshold over WebSockets.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Other Projects Grid -->
+        <div class="projects-grid">
+          <!-- CompilationPipeline -->
+          <div class="project-card">
+            <div>
+              <div class="project-card-header">
+                <div class="project-tags">
+                  <span class="project-tag tag-dev">Java</span>
+                  <span class="project-tag tag-dev">Systems</span>
+                </div>
+                <a href="https://github.com/Malakzedan/CompilationPipeline" target="_blank" rel="noopener"
+                  class="project-link-icon" aria-label="Open CompilationPipeline GitHub">
+                  <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.197 22 16.44 22 12.017 22 6.484 17.522 2 12 2z" />
+                  </svg>
+                </a>
+              </div>
+              <h3 class="project-title">CompilationPipeline</h3>
+              <p class="project-desc">
+                Designed and implemented a multi-stage compiler pipeline in Java. Incorporates a custom lexical scanner,
+                syntactic LL/LR parsing, Abstract Syntax Tree (AST) generation, type checking, static semantic
+                validation, and intermediate code generation.
+              </p>
+            </div>
+            <div class="project-stack">
+              <span class="label">Stack:</span>
+              <span>Java · Lexer / Parser · AST · Compiler Theory</span>
+            </div>
+          </div>
+
+          <!-- sentimentiq -->
+          <div class="project-card">
+            <div>
+              <div class="project-card-header">
+                <div class="project-tags">
+                  <span class="project-tag tag-ai">AI/ML</span>
+                  <span class="project-tag tag-ai">NLP</span>
+                </div>
+                <a href="https://github.com/Malakzedan/sentimentiq" target="_blank" rel="noopener"
+                  class="project-link-icon" aria-label="Open sentimentiq GitHub">
+                  <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.197 22 16.44 22 12.017 22 6.484 17.522 2 12 2z" />
+                  </svg>
+                </a>
+              </div>
+              <h3 class="project-title">sentimentiq</h3>
+              <p class="project-desc">
+                An NLP text extraction and sentiment taxonomy pipeline for consumer reviews and tweets. Features text
+                preprocessing, feature extraction with a 5,000-dimensional TF-IDF matrix, and model optimization using
+                Naive Bayes &amp; Logistic Regression via GridSearchCV.
+              </p>
+            </div>
+            <div class="project-stack">
+              <span class="label">Stack:</span>
+              <span>Python · Scikit-learn · FastAPI · Streamlit</span>
+            </div>
+          </div>
+
+          <!-- User-merchant-portal -->
+          <div class="project-card">
+            <div>
+              <div class="project-card-header">
+                <div class="project-tags">
+                  <span class="project-tag tag-dev">Full-Stack</span>
+                  <span class="project-tag tag-dev">Security</span>
+                </div>
+                <a href="https://github.com/Malakzedan/User-merchant-portal" target="_blank" rel="noopener"
+                  class="project-link-icon" aria-label="Open User-merchant-portal GitHub">
+                  <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.197 22 16.44 22 12.017 22 6.484 17.522 2 12 2z" />
+                  </svg>
+                </a>
+              </div>
+              <h3 class="project-title">User-merchant-portal</h3>
+              <p class="project-desc">
+                High-security banking portal modules co-developed during the AAIB internship. Features customer
+                dashboards and merchant management panels. Implemented secure token-based authentication, structured
+                RESTful API schemas with Node.js/Express, and built React user interfaces.
+              </p>
+            </div>
+            <div class="project-stack">
+              <span class="label">Stack:</span>
+              <span>React.js · Node.js · Express.js · SQL Server</span>
+            </div>
+          </div>
+
+          <!-- Cloud Infrastructure on Microsoft Azure -->
+          <div class="project-card">
+            <div>
+              <div class="project-card-header">
+                <div class="project-tags">
+                  <span class="project-tag tag-cloud">Azure</span>
+                  <span class="project-tag tag-dev">SysOps</span>
+                </div>
+                <!-- No GitHub link -->
+              </div>
+              <h3 class="project-title">Secure Enterprise Infrastructure</h3>
+              <p class="project-desc">
+                Engineered secure VM pools, private subnets, cloud firewalls, storage access shares, and isolated public
+                route tables on Microsoft Azure. Configured cross-resource permissions and security policies, hosting a
+                production website with high scalability and disaster recovery parameters.
+              </p>
+            </div>
+            <div class="project-stack">
+              <span class="label">Stack:</span>
+              <span>Azure · Virtual Networking · Security Groups</span>
+            </div>
+          </div>
+
+          <!-- Medical & MRI Machine Learning Models -->
+          <div class="project-card">
+            <div>
+              <div class="project-card-header">
+                <div class="project-tags">
+                  <span class="project-tag tag-ai">AI/ML</span>
+                  <span class="project-tag tag-ai">Computer Vision</span>
+                </div>
+                <!-- No GitHub link -->
+              </div>
+              <h3 class="project-title">Clinical Disease &amp; MRI Classification</h3>
+              <p class="project-desc">
+                Constructed high-accuracy classification architectures (Convolutional Neural Networks and Autoencoders)
+                for Alzheimer MRI segmentation and classification. Evaluated and trained tabular machine learning models
+                (SVM, Random Forests, K-Means clustering) on medical health indicator datasets.
+              </p>
+            </div>
+            <div class="project-stack">
+              <span class="label">Stack:</span>
+              <span>PyTorch · TensorFlow · Scikit-learn · PIL</span>
+            </div>
+          </div>
+
+          <!-- Master Builder Company Platform -->
+          <div class="project-card">
+            <div>
+              <div class="project-card-header">
+                <div class="project-tags">
+                  <span class="project-tag tag-dev">Full-Stack</span>
+                  <span class="project-tag tag-dev">Engineering</span>
+                </div>
+                <a href="https://www.masterbuilder-eg.com/" target="_blank" rel="noopener" class="project-link-icon"
+                  aria-label="Open Master Builder Website">
+                  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+              <h3 class="project-title">Master Builder Company Platform</h3>
+              <p class="project-desc">
+                Architected and developed a full-stack digital platform for Master Builder Company, combining a
+                customer-facing website with an administrative management system. The platform enables customers to
+                explore the company’s projects and services, submit service requests, send inquiries, and provide
+                feedback. The admin dashboard provides centralized management of projects, services, inquiries,
+                testimonials, and website content, with validation and approval workflows for controlled publishing.
+              </p>
+            </div>
+            <div class="project-stack">
+              <span class="label">Stack:</span>
+              <span>React.js · Node.js · Express.js · Hetzner</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 04: DSA Algorithmic Sandbox (ECPC Highlights) -->
+    <section id="sandbox">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-number">04</span>
+          <h2 class="section-title">Sandbox <span class="dim">/ algorithmic playground</span></h2>
+        </div>
+
+        <div class="sandbox-card">
+          <div class="sandbox-tabs">
+            <button class="sandbox-tab active" onclick="switchSandboxTab(0)">Binary Search Simulation</button>
+            <button class="sandbox-tab" onclick="switchSandboxTab(1)">Bubble Sort Visualization</button>
+          </div>
+
+          <div class="sandbox-workspace">
+            <!-- Binary Search Panel -->
+            <div class="sandbox-panel active" id="sandboxPanel0">
+              <p class="sandbox-desc">
+                Demonstrates high-efficiency binary search targeting integers in a sorted sequence. Shows <b>Left
+                  (L)</b>, <b>Right (R)</b>, and calculated <b>Middle (M)</b> markers, demonstrating an average time
+                complexity of <i>O(log N)</i>.
+              </p>
+              <div class="sandbox-controls">
+                <span class="sandbox-desc">Target value:</span>
+                <select id="binarySearchTarget" class="sandbox-btn" style="min-width: 60px;">
+                  <option value="12">12</option>
+                  <option value="29">29</option>
+                  <option value="56" selected>56</option>
+                  <option value="78">78</option>
+                  <option value="94">94</option>
+                  <option value="99">99</option>
+                </select>
+                <button class="sandbox-btn" id="binarySearchStartBtn" onclick="runBinarySearch()">Search</button>
+                <button class="sandbox-btn" onclick="resetBinarySearch()">Reset</button>
+              </div>
+
+              <div class="algo-visualizer-container">
+                <div class="algo-status-overlay" id="binarySearchStatus">Status: Idle</div>
+                <div class="search-grid" id="binarySearchGrid">
+                  <!-- Nodes generated by Javascript -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Bubble Sort Panel -->
+            <div class="sandbox-panel" id="sandboxPanel1">
+              <p class="sandbox-desc">
+                Bubble Sort is a comparison-based sorting algorithm. This visual simulation steps through contiguous
+                elements, swapping them if out of order, and placing sorted elements at the end. Time complexity:
+                <i>O(N²)</i>.
+              </p>
+              <div class="sandbox-controls">
+                <button class="sandbox-btn" id="bubbleSortStartBtn" onclick="runBubbleSort()">Sort Array</button>
+                <button class="sandbox-btn" id="bubbleSortStepBtn" onclick="stepBubbleSort()">Single Step</button>
+                <button class="sandbox-btn" onclick="resetBubbleSort()">Shuffle</button>
+              </div>
+
+              <div class="algo-visualizer-container">
+                <div class="algo-status-overlay" id="bubbleSortStatus">Status: Sorted/Idle</div>
+                <div class="bar-chart" id="bubbleSortChart">
+                  <!-- Bars generated by Javascript -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 05: Core Skills Toolkit -->
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-number">05</span>
+          <h2 class="section-title">Skills <span class="dim">/ core capabilities</span></h2>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Languages -->
+          <div>
+            <h3 class="skill-group-title">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+              </svg>
+              <span>Languages</span>
+            </h3>
+            <div class="chips-row">
+              <span class="skill-chip">Python</span>
+              <span class="skill-chip">C++</span>
+              <span class="skill-chip">JavaScript</span>
+              <span class="skill-chip">TypeScript</span>
+              <span class="skill-chip">Java</span>
+              <span class="skill-chip">C</span>
+              <span class="skill-chip">SQL</span>
+              <span class="skill-chip">HTML5 / CSS3</span>
+            </div>
+          </div>
+
+          <!-- Technologies -->
+          <div>
+            <h3 class="skill-group-title">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z" />
+              </svg>
+              <span>Web &amp; Backend</span>
+            </h3>
+            <div class="chips-row">
+              <span class="skill-chip">React.js</span>
+              <span class="skill-chip">Node.js</span>
+              <span class="skill-chip">Express.js</span>
+              <span class="skill-chip">FastAPI</span>
+              <span class="skill-chip">MongoDB</span>
+              <span class="skill-chip">SQL Server</span>
+              <span class="skill-chip">REST APIs</span>
+              <span class="skill-chip">WebSockets</span>
+              <span class="skill-chip">Flutter</span>
+            </div>
+          </div>
+
+          <!-- AI & ML -->
+          <div>
+            <h3 class="skill-group-title">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+              </svg>
+              <span>AI &amp; Machine Learning</span>
+            </h3>
+            <div class="chips-row">
+              <span class="skill-chip">Machine Learning</span>
+              <span class="skill-chip">Deep Learning</span>
+              <span class="skill-chip">NLP</span>
+              <span class="skill-chip">Computer Vision</span>
+              <span class="skill-chip">PyTorch</span>
+              <span class="skill-chip">TensorFlow</span>
+              <span class="skill-chip">Scikit-learn</span>
+              <span class="skill-chip">OpenAI Whisper</span>
+              <span class="skill-chip">TF-IDF</span>
+            </div>
+          </div>
+
+          <!-- Infrastructure & Tools -->
+          <div>
+            <h3 class="skill-group-title">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95C8.08 7.14 9.94 6 12 6c2.62 0 4.88 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96 0 1.65-1.35 3-3 3z" />
+              </svg>
+              <span>Cloud &amp; Toolkit</span>
+            </h3>
+            <div class="chips-row">
+              <span class="skill-chip">Microsoft Azure</span>
+              <span class="skill-chip">AWS</span>
+              <span class="skill-chip">Git / GitHub</span>
+              <span class="skill-chip">Postman</span>
+              <span class="skill-chip">VS Code</span>
+              <span class="skill-chip">Google Colab</span>
+              <span class="skill-chip">PyCharm</span>
+              <span class="skill-chip">Linux CLI</span>
+              <span class="skill-chip">PCA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 06: Contact Portal -->
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-card">
+          <h2>Let's build something scalable.</h2>
+          <p>
+            I am currently seeking full-time positions, internships, or engineering collaborations in Full-Stack
+            development, Cloud infrastructure, or AI/ML pipelines.
+          </p>
+          <div class="contact-links">
+            <button class="btn btn-primary" id="copyEmailBtn">Copy email address</button>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/malak-zedan-875437263" target="_blank"
+              rel="noopener">LinkedIn Profile ↗</a>
+            <a class="btn btn-ghost" href="https://github.com/Malakzedan" target="_blank" rel="noopener">GitHub Profile
+              ↗</a>
+          </div>
+          <div class="copy-toast" id="copyToastText"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Sticky Footer -->
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© 2026 Malak Abdullah Zedan</span>
+      <span>New Cairo, Egypt</span>
+      <span style="font-family: var(--sans);">Built with HTML, vanilla CSS, and JS</span>
+    </div>
+  </footer>
+
+  <!-- Resume Modal Overlay -->
+  <div class="modal-overlay" id="resumeModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Malak Abdullah Zedan — Curriculum Vitae</h4>
+        <button class="modal-close" id="closeResumeBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="resume-preview">
+          <div style="text-align: center; margin-bottom: 20px;">
+            <h2 style="font-family: var(--display); font-weight: 800;">MALAK ABDULLAH ZEDAN</h2>
+            <p style="font-size: 13px; color: var(--text-muted);">
+              New Cairo, Azad Compound | Malakabdallahzidan@gmail.com
+            </p>
+            <p style="font-size: 12px; color: var(--primary); font-family: var(--mono); margin-top: 6px;">
+              linkedin.com/in/malak-zedan-875437263 | github.com/Malakzedan
+            </p>
+          </div>
+
+          <h3 class="resume-section-title">Education</h3>
+          <div class="resume-item">
+            <div class="resume-item-header">
+              <span>Future University in Egypt</span>
+              <span>2022 — 2026</span>
+            </div>
+            <div class="resume-item-sub">Bachelor’s Degree in Computer Science</div>
+          </div>
+
+          <h3 class="resume-section-title">Experience</h3>
+          <div class="resume-item">
+            <div class="resume-item-header">
+              <span>Jelecom</span>
+              <span>07/2025 — 08/2025</span>
+            </div>
+            <div class="resume-item-sub">Cloud Engineer</div>
+            <ul class="resume-bullet-list">
+              <li>Deployed and managed Azure Virtual Machines (VMs) with networking and storage.</li>
+              <li>Configured VNets, NSGs, and Azure File Share for secure access and shared storage.</li>
+              <li>Published a website on Azure and applied cloud best practices for resource management and security.
+              </li>
+            </ul>
+          </div>
+
+          <div class="resume-item">
+            <div class="resume-item-header">
+              <span>Egyptian Collegiate Programming Contest</span>
+              <span>07/2025</span>
+            </div>
+            <div class="resume-item-sub">Contestant</div>
+            <ul class="resume-bullet-list">
+              <li>Solved algorithmic and data structure problems under time constraints.</li>
+              <li>Enhanced problem-solving, teamwork, and analytical thinking skills.</li>
+            </ul>
+          </div>
+
+          <div class="resume-item">
+            <div class="resume-item-header">
+              <span>Arab African International Bank</span>
+              <span>08/2024</span>
+            </div>
+            <div class="resume-item-sub">Full-Stack Developer</div>
+            <ul class="resume-bullet-list">
+              <li>Developed user and merchant portal systems using Node.js, Express.js, and React.js.</li>
+              <li>Implemented APIs, database management, and front-end UI integration.</li>
+            </ul>
+          </div>
+
+          <h3 class="resume-section-title">Projects</h3>
+          <div class="resume-item">
+            <div class="resume-item-header">
+              <span>Intelligent Interview Simulation System (IISS)</span>
+              <span>Graduation Project</span>
+            </div>
+            <ul class="resume-bullet-list">
+              <li>Developed an AI-powered interview simulation platform supporting Web, Mobile, and Desktop.</li>
+              <li>Built a full-stack architecture using Flutter, Node.js, Express.js, and MongoDB.</li>
+              <li>Integrated AI modules for facial emotion detection, eye tracking, tone analysis, speech processing,
+                and identity verification.</li>
+              <li>Developed recruiter and candidate workflows with AI-generated feedback and performance reporting.</li>
+            </ul>
+          </div>
+
+          <div class="resume-item">
+            <div class="resume-item-header">
+              <span>CompilationPipeline</span>
+              <span>Personal Project</span>
+            </div>
+            <ul class="resume-bullet-list">
+              <li>Developed a multi-stage programming language compiler pipeline in Java (lexer, parser, AST
+                generation).</li>
+              <li>Implemented static semantic checks and type safety verification mechanisms.</li>
+            </ul>
+          </div>
+
+          <div class="resume-item">
+            <div class="resume-item-header">
+              <span>sentimentiq</span>
+              <span>Personal Project</span>
+            </div>
+            <ul class="resume-bullet-list">
+              <li>Developed an NLP-based sentiment analysis system for customer reviews and tweets.</li>
+              <li>Performed feature extraction using a 5,000-dimensional TF-IDF sparse matrix.</li>
+              <li>Trained and optimized machine learning models using GridSearchCV.</li>
+            </ul>
+          </div>
+
+          <div class="resume-item">
+            <div class="resume-item-header">
+              <span>User-merchant-portal</span>
+              <span>AAIB Project</span>
+            </div>
+            <ul class="resume-bullet-list">
+              <li>Built secure token-authenticated dashboard endpoints for merchant and client portal networks.</li>
+              <li>Integrated React.js front-end with relational backend API services.</li>
+            </ul>
+          </div>
+
+          <div class="resume-item">
+            <div class="resume-item-header">
+              <span>Cloud Infrastructure on Microsoft Azure</span>
+              <span>Personal Project</span>
+            </div>
+            <ul class="resume-bullet-list">
+              <li>Deployed virtual machines, configured networking/security, and hosted a website on Azure.</li>
+            </ul>
+          </div>
+
+          <div class="resume-item">
+            <div class="resume-item-header">
+              <span>Clinical Disease &amp; MRI Classification</span>
+              <span>Personal Project</span>
+            </div>
+            <ul class="resume-bullet-list">
+              <li>Built machine learning models including Logistic Regression, SVM, Random Forest, and K-Means on
+                medical datasets.</li>
+              <li>Developed CNN and Autoencoder models for Alzheimer MRI classification.</li>
+            </ul>
+          </div>
+
+          <div class="resume-item">
+            <div class="resume-item-header">
+              <span>Master Builder Company Platform</span>
+              <span>Full-Stack Project</span>
+            </div>
+            <ul class="resume-bullet-list">
+              <li>Architected and developed a full-stack business platform combining a client site and an admin
+                management dashboard.</li>
+              <li>Enabled client projects exploration, service requests, inquiries, and feedback workflows.</li>
+              <li>Provided centralized validation and approval pipelines for controlled content publishing.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="CV/Malak_Zedan_CV.pdf" download class="btn btn-primary">Download PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---------- Light/Dark Theme Switcher ----------
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+
+    // Check local storage for preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-theme');
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+      if (document.body.classList.contains('light-theme')) {
+        localStorage.setItem('theme', 'light');
+      } else {
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    // ---------- Mobile Menu Overlay Toggle ----------
+    const menuToggleBtn = document.getElementById('menuToggleBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    menuToggleBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      const isExpanded = mobileMenu.classList.contains('active');
+      menuToggleBtn.querySelector('span').textContent = isExpanded ? 'close' : 'menu';
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        menuToggleBtn.querySelector('span').textContent = 'menu';
+      });
+    });
+
+    // ---------- Interactive CLI Terminal Emulator Logic ----------
+    const terminalBody = document.getElementById('terminalBody');
+    const terminalHiddenInput = document.getElementById('terminalHiddenInput');
+    const terminalInputText = document.getElementById('terminalInputText');
+
+    const CLI_HISTORY = [
+      { cmd: 'help', desc: 'Display all available terminal commands' },
+      { cmd: 'about', desc: 'Detailed profile of my engineering background' },
+      { cmd: 'skills', desc: 'Core capabilities in full-stack, cloud, & AI' },
+      { cmd: 'projects', desc: 'List of production systems and ML products' },
+      { cmd: 'experience', desc: 'Chronological timeline of my professional roles' },
+      { cmd: 'cv', desc: 'Trigger the resume download and modal interface' },
+      { cmd: 'clear', desc: 'Flush output cache and clear the terminal screen' }
+    ];
+
+    function focusTerminalInput() {
+      terminalHiddenInput.focus();
+    }
+
+    // Handle inputs
+    terminalHiddenInput.addEventListener('input', (e) => {
+      terminalInputText.textContent = e.target.value;
+    });
+
+    terminalHiddenInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const fullInput = e.target.value.trim();
+        const command = fullInput.toLowerCase();
+
+        // Output original command
+        appendTerminalLine(`Guest-Host% ${fullInput}`, 'terminal-line');
+
+        if (command) {
+          processCLICommand(command);
+        }
+
+        // Reset
+        e.target.value = '';
+        terminalInputText.textContent = '';
+        terminalBody.scrollTop = terminalBody.scrollHeight;
+      }
+    });
+
+    function appendTerminalLine(text, className) {
+      const div = document.createElement('div');
+      div.className = className;
+      div.innerHTML = text;
+      // Insert before input container
+      const inputContainer = terminalBody.querySelector('.terminal-input-container');
+      terminalBody.insertBefore(div, inputContainer);
+    }
+
+    function processCLICommand(command) {
+      switch (command) {
+        case 'help':
+          let helpOutput = 'Available commands:<br>';
+          CLI_HISTORY.forEach(item => {
+            helpOutput += `<span style="color: var(--primary); font-weight:600;">${item.cmd.padEnd(12)}</span> - ${item.desc}<br>`;
+          });
+          appendTerminalLine(helpOutput, 'terminal-output');
+          break;
+        case 'about':
+          appendTerminalLine('Full-Stack Engineer, AI/ML practitioner, and Azure cloud enthusiast. Graduated with honors in CS from FUE. Focused on backend scale, real-time WebSockets, computer vision classification, and competitive programming (ECPC Contestant).', 'terminal-output');
+          break;
+        case 'skills':
+          appendTerminalLine('<b>Languages:</b> Python, C++, JavaScript, TypeScript, Java, C, SQL<br><b>Frameworks:</b> React, Node.js, Express, FastAPI, Flutter<br><b>Machine Learning:</b> PyTorch, TensorFlow, Scikit-learn, Vision CNN, NLP Sentiment<br><b>Cloud/Ops:</b> Microsoft Azure, Virtual Machines, networking security groups, Git/GitHub', 'terminal-output');
+          break;
+        case 'projects':
+          appendTerminalLine('<b>1. IISS Graduation Project:</b> Real-time video/audio AI interview simulator using Flutter & WebSockets.<br><b>2. CompilationPipeline (Java):</b> Multi-stage compiler pipeline with scanner, AST parser, and static semantic checks.<br><b>3. sentimentiq (Python):</b> TF-IDF and GridSearchCV optimized classification pipeline with FastAPI.<br><b>4. User-merchant-portal (JS):</b> Secure banking transaction dashboards built using React and Node.js.<br><b>5. Azure Cloud Infrastructure:</b> Secure subnets, firewalls, VM pools, and storage shares on Azure.<br><b>6. Clinical Disease & MRI AI:</b> CNN and Autoencoder classifiers for Alzheimer MRI tissue maps.<br><b>7. Master Builder Company Platform:</b> Full-stack business platform combining project discovery, dynamic service requests, and content moderation dashboards.', 'terminal-output');
+          break;
+        case 'experience':
+          appendTerminalLine('<b>Jelecom (07/2025 - 08/2025):</b> Cloud Engineer Intern (Azure)<br><b>ECPC (07/2025):</b> Algorithms / Competitive Programming Bracket Contestant<br><b>AAIB (08/24):</b> Full-Stack Developer Intern (React/Node.js)', 'terminal-output');
+          break;
+        case 'cv':
+          appendTerminalLine('Opening resume overlay framework and offering PDF download...', 'terminal-output');
+          document.getElementById('resumeModal').classList.add('active');
+          break;
+        case 'clear':
+          // Remove all lines except welcome and input container
+          const lines = terminalBody.querySelectorAll('.terminal-line, .terminal-output');
+          lines.forEach(l => l.remove());
+          break;
+        default:
+          appendTerminalLine(`zsh: command not found: ${command}. Type <span style="color: var(--accent);">help</span> for commands.`, 'terminal-output');
+      }
+    }
+
+    // ---------- Interactive System Design Showcase Data ----------
+    const SYSTEM_LAYERS = [
+      {
+        title: 'Client Application Layer',
+        tech: ['Flutter', 'Dart', 'WebSocket Client', 'WebRTC'],
+        desc: 'Cross-platform client applications (Mobile, Web, and Desktop) that establish hardware media pipelines. Streams camera video frames and audio input chunks to the cloud gateway while managing a responsive user interface for the interactive interview session.',
+        challenge: '<b>High Frame Throttling:</b> Native high-resolution camera feeds saturated connection limits. Implemented a frame-slicing buffer that crops face regions and downsamples resolution dynamically depending on network performance, maintaining a 94% ML accuracy threshold over WebSockets.'
+      },
+      {
+        title: 'Gateway & Orchestration',
+        tech: ['Node.js', 'Express.js', 'WebSockets (ws)', 'Event Emitter'],
+        desc: 'High-concurrency cluster server that acts as a media streaming gateway. Receives live client audio/video packets, performs user authorization, routes packet buffers to AI inference worker pools, and aggregates results to send back to the candidate UI.',
+        challenge: '<b>Media Synchronization:</b> Video frames and audio waves arrived with different latency profiles. Designed a timestamped buffering queue that aligns frame inputs with corresponding audio packets inside a sliding 1.2-second window before model execution.'
+      },
+      {
+        title: 'Multi-Modal AI Inference Engine',
+        tech: ['Python', 'FastAPI', 'PyTorch', 'TensorFlow', 'OpenAI Whisper', 'OpenCV'],
+        desc: 'Worker pool services running deep learning models. Simultaneously runs a face landmark emotion tracker (CNN), gaze tracking metrics (eye coordinates), speech vocal tone features, and local automatic speech transcription (Whisper ASR).',
+        challenge: '<b>Concurrent Model Latency:</b> Processing four pipelines on CPU caused significant delays. Ported models to ONNX runtime, batched incoming pipeline inferences together, and hosted them on micro-VMs, reducing inference roundtrip time from 640ms to under 80ms.'
+      },
+      {
+        title: 'Database & Data Pipeline',
+        tech: ['MongoDB', 'Mongoose', 'Azure Blob Storage', 'JSON Telemetry'],
+        desc: 'Persistent layer storing applicant authentication, custom job description profiles, interview structures, and full system output reports. Audio recordings are stored in Azure Blob, and detailed time-series emotional tracking indices are structured in MongoDB.',
+        challenge: '<b>Large Time-Series Documents:</b> Raw tracking points created oversized database documents. Engineered a custom aggregation script that aggregates raw coordinates into statistical buckets (mean, variance) every 15 seconds, lowering database index size by 78%.'
+      }
+    ];
+
+    function selectSysBlock(index) {
+      const blocks = document.querySelectorAll('.sys-block');
+      blocks.forEach((b, i) => {
+        if (i === index) b.classList.add('active');
+        else b.classList.remove('active');
+      });
+
+      const data = SYSTEM_LAYERS[index];
+      document.getElementById('sysDetailTitle').textContent = data.title;
+      document.getElementById('sysDetailDesc').textContent = data.desc;
+      document.getElementById('sysDetailChallenge').innerHTML = data.challenge;
+
+      // Tech tags
+      const techContainer = document.getElementById('sysDetailTech');
+      techContainer.innerHTML = '';
+      data.tech.forEach(t => {
+        const span = document.createElement('span');
+        span.className = 'sys-tech-tag';
+        span.textContent = t;
+        techContainer.appendChild(span);
+      });
+    }
+
+    // ---------- Algorithmic Sandbox Logic ----------
+    function switchSandboxTab(tabIndex) {
+      const tabs = document.querySelectorAll('.sandbox-tab');
+      tabs.forEach((t, i) => {
+        if (i === tabIndex) t.classList.add('active');
+        else t.classList.remove('active');
+      });
+
+      const panels = document.querySelectorAll('.sandbox-panel');
+      panels.forEach((p, i) => {
+        if (i === tabIndex) p.classList.add('active');
+        else p.classList.remove('active');
+      });
+    }
+
+    // Binary Search
+    const BS_ARRAY = [3, 8, 12, 17, 23, 29, 37, 45, 56, 62, 70, 78, 85, 94, 99];
+    let bsLeft = 0;
+    let bsRight = BS_ARRAY.length - 1;
+    let bsMid = -1;
+    let bsTarget = 56;
+    let bsStepCount = 0;
+    let bsIsFinished = false;
+
+    function renderBinarySearch() {
+      const grid = document.getElementById('binarySearchGrid');
+      grid.innerHTML = '';
+
+      BS_ARRAY.forEach((val, idx) => {
+        const node = document.createElement('div');
+        node.className = 'search-node';
+        node.textContent = val;
+
+        // Classes based on state
+        if (!bsIsFinished) {
+          if (idx >= bsLeft && idx <= bsRight) {
+            node.classList.add('active-range');
+          } else {
+            node.classList.add('discarded');
+          }
+        } else {
+          if (val !== bsTarget) {
+            node.classList.add('discarded');
+          }
+        }
+
+        if (idx === bsMid && !bsIsFinished) {
+          node.classList.add('mid');
+        }
+
+        if (bsIsFinished && val === bsTarget && idx === bsMid) {
+          node.classList.add('found');
+        }
+
+        // Labels for L, R, M
+        let labels = '';
+        if (idx === bsLeft && !bsIsFinished) labels += '<span class="search-node-label L">L</span>';
+        if (idx === bsRight && !bsIsFinished) labels += '<span class="search-node-label R" style="right:4px;">R</span>';
+        if (idx === bsMid && !bsIsFinished) labels += '<span class="search-node-label M" style="top:26px;">M</span>';
+        node.innerHTML += labels;
+
+        grid.appendChild(node);
+      });
+    }
+
+    async function runBinarySearch() {
+      const startBtn = document.getElementById('binarySearchStartBtn');
+      const targetSelect = document.getElementById('binarySearchTarget');
+      bsTarget = parseInt(targetSelect.value);
+
+      startBtn.disabled = true;
+      resetBinarySearchState();
+
+      const status = document.getElementById('binarySearchStatus');
+
+      while (bsLeft <= bsRight) {
+        bsMid = Math.floor((bsLeft + bsRight) / 2);
+        bsStepCount++;
+        renderBinarySearch();
+
+        status.textContent = `Iteration ${bsStepCount}: L=${bsLeft}, R=${bsRight}. Calculating Mid index = ${bsMid} (val = ${BS_ARRAY[bsMid]})`;
+        await sleep(1500);
+
+        if (BS_ARRAY[bsMid] === bsTarget) {
+          bsIsFinished = true;
+          renderBinarySearch();
+          status.textContent = `Target Found! Value ${bsTarget} discovered at index ${bsMid} in ${bsStepCount} steps. Time: O(log N)`;
+          startBtn.disabled = false;
+          return;
+        }
+
+        if (BS_ARRAY[bsMid] < bsTarget) {
+          status.textContent = `Val ${BS_ARRAY[bsMid]} < Target ${bsTarget}. Narrowing range to right half: L = Mid + 1`;
+          bsLeft = bsMid + 1;
+        } else {
+          status.textContent = `Val ${BS_ARRAY[bsMid]} > Target ${bsTarget}. Narrowing range to left half: R = Mid - 1`;
+          bsRight = bsMid - 1;
+        }
+        await sleep(1200);
+      }
+
+      status.textContent = `Target not found in array. Search completed in ${bsStepCount} steps.`;
+      startBtn.disabled = false;
+    }
+
+    function resetBinarySearchState() {
+      bsLeft = 0;
+      bsRight = BS_ARRAY.length - 1;
+      bsMid = -1;
+      bsStepCount = 0;
+      bsIsFinished = false;
+    }
+
+    function resetBinarySearch() {
+      resetBinarySearchState();
+      document.getElementById('binarySearchStatus').textContent = 'Status: Idle';
+      document.getElementById('binarySearchStartBtn').disabled = false;
+      renderBinarySearch();
+    }
+
+    // Bubble Sort
+    let sortArray = [];
+    let sortIdx = 0;
+    let sortLimit = 0;
+    let sortStepCount = 0;
+    let sortIsFinished = false;
+
+    function resetBubbleSort() {
+      sortArray = [];
+      for (let i = 0; i < 8; i++) {
+        sortArray.push(Math.floor(Math.random() * 85) + 15);
+      }
+      sortIdx = 0;
+      sortLimit = sortArray.length - 1;
+      sortStepCount = 0;
+      sortIsFinished = false;
+
+      document.getElementById('bubbleSortStatus').textContent = 'Status: Array initialized. Click Sort or Single Step.';
+      document.getElementById('bubbleSortStartBtn').disabled = false;
+      document.getElementById('bubbleSortStepBtn').disabled = false;
+      renderBubbleSort();
+    }
+
+    function renderBubbleSort(comparing = [], swapped = []) {
+      const container = document.getElementById('bubbleSortChart');
+      container.innerHTML = '';
+
+      sortArray.forEach((val, idx) => {
+        const bar = document.createElement('div');
+        bar.className = 'visual-bar';
+        bar.style.height = `${val}%`;
+        bar.setAttribute('data-value', val);
+
+        if (sortIsFinished || idx > sortLimit) {
+          bar.classList.add('sorted');
+        } else if (swapped.includes(idx)) {
+          bar.classList.add('swapped');
+        } else if (comparing.includes(idx)) {
+          bar.classList.add('comparing');
+        }
+
+        container.appendChild(bar);
+      });
+    }
+
+    async function stepBubbleSort() {
+      if (sortIsFinished) return;
+
+      const status = document.getElementById('bubbleSortStatus');
+
+      if (sortLimit <= 0) {
+        sortIsFinished = true;
+        renderBubbleSort();
+        status.textContent = `Array sorted in ${sortStepCount} comparisons! Final array structure validated.`;
+        document.getElementById('bubbleSortStartBtn').disabled = true;
+        document.getElementById('bubbleSortStepBtn').disabled = true;
+        return;
+      }
+
+      // Highlight comparison
+      renderBubbleSort([sortIdx, sortIdx + 1]);
+      status.textContent = `Comparing indices ${sortIdx} and ${sortIdx + 1} (${sortArray[sortIdx]} vs ${sortArray[sortIdx + 1]})`;
+      await sleep(400);
+
+      sortStepCount++;
+
+      if (sortArray[sortIdx] > sortArray[sortIdx + 1]) {
+        // Swap
+        let temp = sortArray[sortIdx];
+        sortArray[sortIdx] = sortArray[sortIdx + 1];
+        sortArray[sortIdx + 1] = temp;
+
+        renderBubbleSort([], [sortIdx, sortIdx + 1]);
+        status.textContent = `Swapped indices ${sortIdx} and ${sortIdx + 1} (${sortArray[sortIdx + 1]} > ${sortArray[sortIdx]})`;
+        await sleep(400);
+      }
+
+      sortIdx++;
+      if (sortIdx >= sortLimit) {
+        sortIdx = 0;
+        sortLimit--;
+      }
+
+      renderBubbleSort();
+    }
+
+    async function runBubbleSort() {
+      const startBtn = document.getElementById('bubbleSortStartBtn');
+      const stepBtn = document.getElementById('bubbleSortStepBtn');
+
+      startBtn.disabled = true;
+      stepBtn.disabled = true;
+
+      while (!sortIsFinished) {
+        await stepBubbleSort();
+        if (sortLimit <= 0) break;
+        await sleep(300);
+      }
+
+      sortIsFinished = true;
+      renderBubbleSort();
+      document.getElementById('bubbleSortStatus').textContent = `Full Array sorted in ${sortStepCount} operations. Time: O(N²)`;
+    }
+
+    // Helper functions
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    // ---------- Modal Overlay Resume Controls ----------
+    const resumeModal = document.getElementById('resumeModal');
+    const openResumeBtn = document.getElementById('openResumeBtn');
+    const closeResumeBtn = document.getElementById('closeResumeBtn');
+
+    openResumeBtn.addEventListener('click', () => {
+      resumeModal.classList.add('active');
+    });
+
+    closeResumeBtn.addEventListener('click', () => {
+      resumeModal.classList.remove('active');
+    });
+
+    // Close on click outside modal content
+    resumeModal.addEventListener('click', (e) => {
+      if (e.target === resumeModal) {
+        resumeModal.classList.remove('active');
+      }
+    });
+
+    // ---------- Email Direct Copy Function ----------
+    const copyEmailBtn = document.getElementById('copyEmailBtn');
+    const copyToastText = document.getElementById('copyToastText');
+    const emailAddress = 'Malakabdallahzidan@gmail.com';
+
+    copyEmailBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(emailAddress);
+        copyToastText.textContent = `Copied ${emailAddress} to clipboard.`;
+        copyToastText.style.color = 'var(--primary)';
+      } catch (err) {
+        copyToastText.textContent = `Direct address: ${emailAddress}`;
+        copyToastText.style.color = 'var(--accent)';
+      }
+      setTimeout(() => {
+        copyToastText.textContent = '';
+      }, 4000);
+    });
+
+    // ---------- Page Initializer ----------
+    window.addEventListener('DOMContentLoaded', () => {
+      focusTerminalInput();
+      selectSysBlock(0);
+      renderBinarySearch();
+      resetBubbleSort();
+    });
+  </script>
+</body>
+
+</html>
